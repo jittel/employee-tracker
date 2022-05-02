@@ -18,7 +18,7 @@ const db = mysql.createConnection(
 db.connect((err) => {
     if (err) throw err;
     console.log("connected as id " + db.threadId + "\n");
-    // prompts();
+    prompts();
 });
 
 // ask all prompts
@@ -96,7 +96,7 @@ function viewRoles() {
     })
 }
 
-// TODO: add employee
+// add employee
 function addEmp() {
     inquirer.prompt([
         {
@@ -120,13 +120,25 @@ function addEmp() {
             prompt: "enter manager ID"
         }
     ]).then((res) => {
-        // stuff
+        db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [res.firstName, res.lastName, res.roleId, res.managerId],(err, data) => {
+            if (err) throw err;
+            console.table(data);
+            prompts();
+        })
     })
 }
 
 // TODO: add department
 function addDep() {
-    //things
+    inquirer.prompt([
+        {
+            type:"input",
+            name:"department",
+            message:"add a department:"
+        }
+    ]).then((res) => {
+        //stuff
+    })
 }
 
 // TODO: add role
