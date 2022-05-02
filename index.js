@@ -39,7 +39,8 @@ function prompts() {
         name: "choice"
     }).then(answers => {
         console.log(answers.choice)
-        // TODO: make a case and switch for every answer
+
+        // runs various functions based on prompt answer
         switch (answers.choice) {
             case "view all employees":
                 viewEmp();
@@ -49,6 +50,18 @@ function prompts() {
                 break;
             case "view all roles":
                 viewRoles();
+                break;
+            case "add employee":
+                addEmp();
+                break;
+            case "add department":
+                addDep();
+                break;
+            case "add role":
+                addRoles();
+                break;
+            case "update employee role":
+                updateRoles();
                 break;
             default:
                 db.end();
@@ -84,9 +97,32 @@ function viewRoles() {
 }
 
 // TODO: add employee
+function addEmp() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "what's the employees first name"
+        },
+        {
+            type:"input",
+            name:"lastName",
+            message:"what's the employees last name"
+        }
+    ])
+}
 
 // TODO: add department
+function addDep() {
+    //things
+}
 
 // TODO: add role
+function addRoles() {
+    //things
+}
 
 // TODO: update employee role
+function updateRoles() {
+    //things
+}
