@@ -102,14 +102,26 @@ function addEmp() {
         {
             type: "input",
             name: "firstName",
-            message: "what's the employees first name"
+            message: "enter employee first name"
         },
         {
             type:"input",
             name:"lastName",
-            message:"what's the employees last name"
+            message:"enter employee last name"
+        },
+        {
+            type:"number",
+            name: "roleId",
+            prompt: "enter role ID"
+        },
+        {
+            type:"number",
+            name: "managerId",
+            prompt: "enter manager ID"
         }
-    ])
+    ]).then((res) => {
+        // stuff
+    })
 }
 
 // TODO: add department
