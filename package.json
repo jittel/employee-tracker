@@ -1,0 +1,24 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "tracks employees through sql",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jittel/employee-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^2.2.5",
+    "inquirer": "^8.2.2"
+  },
+  "bugs": {
+    "url": "https://github.com/jittel/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/jittel/employee-tracker#readme"
+}
