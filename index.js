@@ -128,7 +128,7 @@ function addEmp() {
     })
 }
 
-// TODO: add department
+// add department
 function addDep() {
     inquirer.prompt([
         {
@@ -137,7 +137,11 @@ function addDep() {
             message:"add a department:"
         }
     ]).then((res) => {
-        //stuff
+        db.query("INSERT INTO department (department_name) VALUES (?)", [res.department],(err, data) => {
+            if (err) throw err;
+            console.table(data);
+            prompts();
+        })
     })
 }
 
