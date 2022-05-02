@@ -134,7 +134,7 @@ function addDep() {
         {
             type:"input",
             name:"department",
-            message:"add a department:"
+            message:"enter department name"
         }
     ]).then((res) => {
         db.query("INSERT INTO department (department_name) VALUES (?)", [res.department],(err, data) => {
@@ -145,12 +145,51 @@ function addDep() {
     })
 }
 
-// TODO: add role
+// add role
 function addRoles() {
-    //things
+    inquirer.prompt([
+        {
+            type:"input",
+            name:"title",
+            message:"enter role title"
+        },
+        {
+            type:"number",
+            name:"salary",
+            message:"enter salary"
+        },
+        {
+            type:"number",
+            name:"departmentId",
+            message:"enter department ID"
+        }
+    ]).then((res) => {
+        db.query("INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)", [res.title, res.salary, res.departmentId],(err, data) => {
+            if (err) throw err;
+            console.table(data);
+            prompts();
+        })
+    })
 }
 
-// TODO: update employee role
+// update employee role
 function updateRoles() {
-    //things
+    inquirer.prompt([
+        {
+            type:"number",
+            name:"employeeId",
+            message:"enter employee ID of the employee who's role you want to change"
+        },
+        {
+            type:"number",
+            name:"roleId",
+            message:"enter the ID of the new role"
+        }
+    ]).then((res) => {
+        db.query("UPDATE employee SET role_id = ? WHERE id = ?", [res.roleId, res.employeeId],(err, data) => {
+            if (err) throw err;
+            console.table(data);
+            prompts();
+        })
+    })
 }
